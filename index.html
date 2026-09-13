@@ -58,6 +58,7 @@
     .monogram,.logo{font-family:"Cormorant Garamond",serif;color:var(--champagne);letter-spacing:.08em}
     .monogram{font-size:44px}.monogram span,.logo span{opacity:.6;margin:0 7px}
     .password-card h1{font-family:"Cormorant Garamond",serif;font-size:52px;margin:12px 0}
+    .guest-instruction{margin:15px auto 28px;max-width:380px;color:var(--champagne);font-family:"Cormorant Garamond",serif;font-size:clamp(26px,5vw,34px);font-weight:600;line-height:1.08}.guest-prompt{display:block;margin:0 0 10px;color:#332b24;font-family:"Cormorant Garamond",serif;font-size:clamp(22px,4vw,28px);font-weight:600;line-height:1.2;text-align:left}
     .answer-modal{position:fixed;inset:0;z-index:1300;display:grid;place-items:center;padding:22px;background:rgba(12,10,8,.72);backdrop-filter:blur(9px)}.answer-modal-card{width:min(500px,100%);padding:38px 30px;border:1px solid rgba(199,165,106,.55);border-radius:28px;background:linear-gradient(145deg,#fffaf3,#efe1ce);box-shadow:0 32px 90px rgba(0,0,0,.46);text-align:center}.answer-modal-card .seal-mark{width:58px;height:58px;display:grid;place-items:center;margin:0 auto 18px;border-radius:50%;background:linear-gradient(145deg,#d8b976,#a87d3a);color:white;font:600 22px "Cormorant Garamond",serif;box-shadow:0 9px 22px rgba(83,56,24,.3)}.answer-modal-card p{margin:0 0 25px;color:#43382d;font:500 24px/1.45 "Cormorant Garamond",serif}.answer-modal-card button{min-width:160px}
     .eyebrow{text-transform:uppercase;letter-spacing:.35em;font-size:13px;color:var(--champagne);font-weight:600}
     .soft,.hint{color:var(--soft)}
@@ -178,9 +179,9 @@
   </div>
   <div id="password-screen" class="password-screen hidden">
     <div class="password-card">
-      <div class="monogram">B<span>|</span>L</div><p class="eyebrow">Guest question</p><h1>What is our cat's name?</h1>
-      <p class="soft">Enter your answer below to view our wedding website.</p>
-      <form id="password-form"><input id="password-input" type="text" placeholder="Guest answer" autocomplete="off" autocapitalize="words"><button type="submit">Enter</button></form>
+      <div class="monogram">B<span>|</span>L</div><p class="eyebrow">Guest question</p>
+      <p class="guest-instruction">Enter your answer below to view our wedding website</p>
+      <form id="password-form"><label class="guest-prompt" for="password-input">What is our cat's name?</label><input id="password-input" type="text" placeholder="Guest answer" autocomplete="off" autocapitalize="words"><button type="submit">Enter</button></form>
       <p id="password-error" class="error"></p>
     </div>
   </div>
@@ -216,7 +217,7 @@
         </a>
       </div>
     </section>
-    <section id="details" class="section details"><p class="eyebrow">The day</p><h2>Wedding details</h2><div class="cards"><article><h3>Venue</h3><p>The Bell Tower Rooftop, Perth.</p></article><article><h3>Style</h3><p>Cocktail-style celebration with drinks, food, music and good company.</p></article><article><h3>Dress</h3><p>Cocktail / formal. Look sharp, feel comfortable, and be ready to celebrate.</p></article><article><h3>Guests</h3><p>An intimate celebration with a maximum of 30 of our closest family and friends.</p></article></div></section>
+    <section id="details" class="section details"><p class="eyebrow">The day</p><h2>Wedding details</h2><div class="cards"><article><h3>Venue</h3><p>The Bell Tower Rooftop, Perth.</p></article><article><h3>Style</h3><p>Cocktail-style celebration with drinks, food, music and good company.</p></article><article><h3>Dress</h3><p>Cocktail / formal. Look sharp, feel comfortable, and be ready to celebrate.</p></article><article><h3>Guests</h3><p>An intimate celebration with a maximum of 30 of our closest family and friends.</p></article><article><h3>Gifts</h3><p>Your presence is the only present we need. Please, no gifts. We simply want to celebrate our wedding with the people we love most.</p></article></div></section>
     <section class="section timeline"><p class="eyebrow">Schedule</p><h2>The plan for the evening</h2><div class="timeline-list"><div><strong>3:30pm</strong><span>Guest arrival</span></div><div><strong>4:00pm</strong><span>Ceremony</span></div><div><strong>4:30pm</strong><span>Bell Tower experience and photos</span></div><div><strong>5:00pm</strong><span>Drinks, grazing and celebrations</span></div><div><strong>8:00pm</strong><span>Formal celebrations conclude (guests welcome to continue the evening at nearby venues)</span></div></div><p class="small-note">Timing may be updated closer to the day.</p></section>
     <section class="section aubrey"><div><p class="eyebrow">Family</p><h2>A special part of our day</h2><p>Our family would not be complete without Aubrey. She will have a very special role in the day, and we cannot wait to celebrate this moment together.</p></div></section>
     <section id="rsvp" class="section rsvp">
@@ -272,7 +273,7 @@
         <button class="quiz-close" type="button" onclick="closeQuiz()">Close</button>
         <p class="eyebrow">A little competition in true Linley and Brendan style</p>
         <h2>The Brendan & Linley Quiz</h2>
-        <p class="quiz-intro">Think you know us? Answer all ten questions and give us your best tie-breaker. The highest score wins a prize on the day.</p>
+        <p class="quiz-intro">Think you know us? Type your answer to all fifteen questions. There are no clues and no multiple choice—we want to see what you come up with. We’ll score the answers ourselves, and the winner gets a prize on the day.</p>
         <iframe name="hidden-quiz-frame" style="display:none;"></iframe>
         <form id="quiz-form" class="quiz-form">
           <div class="quiz-person">
@@ -280,18 +281,21 @@
             <label>Email<input id="quiz-email" type="email" required placeholder="Email address"></label>
           </div>
 
-          <label class="quiz-question"><span>1. When did we first meet?</span><span class="quiz-options"><label class="choice"><input type="radio" name="q1" value="September 2022" required>September 2022</label><label class="choice"><input type="radio" name="q1" value="October 2022">October 2022</label><label class="choice"><input type="radio" name="q1" value="December 2022">December 2022</label></span></label>
-          <label class="quiz-question"><span>2. Where did Brendan propose?</span><span class="quiz-options"><label class="choice"><input type="radio" name="q2" value="The Bell Tower" required>The Bell Tower</label><label class="choice"><input type="radio" name="q2" value="Millbrook Winery">Millbrook Winery</label><label class="choice"><input type="radio" name="q2" value="Crown Perth">Crown Perth</label></span></label>
-          <label class="quiz-question"><span>3. How did we arrive for the proposal?</span><span class="quiz-options"><label class="choice"><input type="radio" name="q3" value="Limousine" required>Limousine</label><label class="choice"><input type="radio" name="q3" value="Helicopter">Helicopter</label><label class="choice"><input type="radio" name="q3" value="Horse and carriage">Horse and carriage</label></span></label>
-          <label class="quiz-question"><span>4. What personality trait do we definitely share?</span><span class="quiz-options"><label class="choice"><input type="radio" name="q4" value="Patience" required>Patience</label><label class="choice"><input type="radio" name="q4" value="Shyness">Shyness</label><label class="choice"><input type="radio" name="q4" value="Competitiveness">Competitiveness</label></span></label>
-          <label class="quiz-question"><span>5. Who is more likely to insist they are right?</span><span class="quiz-options"><label class="choice"><input type="radio" name="q5" value="Brendan" required>Brendan</label><label class="choice"><input type="radio" name="q5" value="Linley">Linley</label><label class="choice"><input type="radio" name="q5" value="Both of them">Both of them</label></span></label>
-          <label class="quiz-question"><span>6. Who is Luna supposedly plotting against?</span><span class="quiz-options"><label class="choice"><input type="radio" name="q6" value="Brendan" required>Brendan</label><label class="choice"><input type="radio" name="q6" value="Aubrey">Aubrey</label><label class="choice"><input type="radio" name="q6" value="Linley">Linley</label></span></label>
-          <label class="quiz-question"><span>7. Which football team does Brendan support?</span><span class="quiz-options"><label class="choice"><input type="radio" name="q7" value="West Coast Eagles" required>West Coast Eagles</label><label class="choice"><input type="radio" name="q7" value="Fremantle Dockers">Fremantle Dockers</label><label class="choice"><input type="radio" name="q7" value="Collingwood">Collingwood</label></span></label>
-          <label class="quiz-question"><span>8. What is Linley's official position on After Hours?</span><span class="quiz-options"><label class="choice"><input type="radio" name="q8" value="She loves them" required>She loves them</label><label class="choice"><input type="radio" name="q8" value="She does not like them">She does not like them</label><label class="choice"><input type="radio" name="q8" value="She is their biggest fan">She is their biggest fan</label></span></label>
-          <label class="quiz-question"><span>9. Where are we getting married?</span><span class="quiz-options"><label class="choice"><input type="radio" name="q9" value="Millbrook Winery" required>Millbrook Winery</label><label class="choice"><input type="radio" name="q9" value="The Bell Tower Rooftop">The Bell Tower Rooftop</label><label class="choice"><input type="radio" name="q9" value="Kings Park">Kings Park</label></span></label>
-          <label class="quiz-question"><span>10. How many guests are joining us?</span><span class="quiz-options"><label class="choice"><input type="radio" name="q10" value="20" required>20</label><label class="choice"><input type="radio" name="q10" value="30">30</label><label class="choice"><input type="radio" name="q10" value="50">50</label></span></label>
-
-          <label class="quiz-question"><span>Tie-breaker: In 25 words or fewer, give us your best piece of marriage advice.</span><textarea id="quiz-tiebreaker" required maxlength="180" placeholder="Your best advice"></textarea></label>
+          <label class="quiz-question"><span>1. Which wedding guest was Brendan speaking to on the phone while waiting for Linley to arrive for their first date?</span><input name="q1" required maxlength="180" placeholder="Your answer"></label>
+          <label class="quiz-question"><span>2. At which café are you most likely to find Brendan and Linley?</span><input name="q2" required maxlength="180" placeholder="Your answer"></label>
+          <label class="quiz-question"><span>3. Where did Brendan propose to Linley?</span><input name="q3" required maxlength="180" placeholder="Your answer"></label>
+          <label class="quiz-question"><span>4. In Brendan and Linley’s apartment, where would you find the third toilet?</span><input name="q4" required maxlength="180" placeholder="Your answer"></label>
+          <label class="quiz-question"><span>5. What major event or celebration occurred while Brendan, Aubrey and Linley were in Vietnam?</span><input name="q5" required maxlength="180" placeholder="Your answer"></label>
+          <label class="quiz-question"><span>6. What was the name of the hotel Brendan and Linley stayed at in Las Vegas?</span><input name="q6" required maxlength="180" placeholder="Your answer"></label>
+          <label class="quiz-question"><span>7. What strange habit does Linley have when eating lollies?</span><input name="q7" required maxlength="180" placeholder="Your answer"></label>
+          <label class="quiz-question"><span>8. What did Brendan, Linley and Aubrey all have in common while in Hong Kong?</span><input name="q8" required maxlength="180" placeholder="Your answer"></label>
+          <label class="quiz-question"><span>9. How long did Brendan wait before introducing Linley to Aubrey?</span><input name="q9" required maxlength="180" placeholder="Your answer"></label>
+          <label class="quiz-question"><span>10. During a family-time activity, what was Linley doing when she broke her arm?</span><input name="q10" required maxlength="180" placeholder="Your answer"></label>
+          <label class="quiz-question"><span>11. Luna was given to Aubrey for which birthday?</span><input name="q11" required maxlength="180" placeholder="Your answer"></label>
+          <label class="quiz-question"><span>12. What annual event do Brendan, Aubrey and, more recently, Linley refuse to miss?</span><input name="q12" required maxlength="180" placeholder="Your answer"></label>
+          <label class="quiz-question"><span>13. Which two WA sporting teams are Brendan and Linley members of?</span><input name="q13" required maxlength="180" placeholder="Your answer"></label>
+          <label class="quiz-question"><span>14. In Brendan’s opinion, what is the happiest time of the year?</span><input name="q14" required maxlength="180" placeholder="Your answer"></label>
+          <label class="quiz-question"><span>15. We have a family cricket membership—what is the name of our second child?</span><input name="q15" required maxlength="180" placeholder="Your answer"></label>
           <button type="submit">Submit Quiz</button>
         </form>
         <div id="quiz-result" class="quiz-result"></div>
@@ -390,21 +394,18 @@
     }
 
     const QUIZ_ENDPOINT="https://script.google.com/macros/s/AKfycbwRaKSaM-FKTclxuhNtH_on2vwnb4zwJAd0psv7gfyruephWhxNiO9b7TLcShhC3aorgw/exec";
-    const quizAnswers={q1:"October 2022",q2:"Millbrook Winery",q3:"Helicopter",q4:"Competitiveness",q5:"Both of them",q6:"Linley",q7:"Fremantle Dockers",q8:"She does not like them",q9:"The Bell Tower Rooftop",q10:"30"};
     document.getElementById("quiz-form").addEventListener("submit",async function(event){
       event.preventDefault();
       const data=new FormData(event.currentTarget);
-      let score=0;
-      Object.entries(quizAnswers).forEach(([question,answer])=>{if(data.get(question)===answer)score++});
       const result=document.getElementById("quiz-result");
       if(!QUIZ_ENDPOINT){
-        result.innerHTML=`You scored <strong>${score}/10</strong>.<br>The quiz is in preview mode and has not been submitted.`;
+        result.innerHTML=`The quiz is in preview mode and has not been submitted.`;
         result.style.display="block";
         result.scrollIntoView({behavior:"smooth",block:"center"});
         return;
       }
-      const payload=new URLSearchParams({name:document.getElementById("quiz-name").value,email:document.getElementById("quiz-email").value,tiebreaker:document.getElementById("quiz-tiebreaker").value});
-      Object.keys(quizAnswers).forEach(question=>payload.set(question,data.get(question)));
+      const payload=new URLSearchParams({name:document.getElementById("quiz-name").value,email:document.getElementById("quiz-email").value});
+      for(let number=1;number<=15;number++){payload.set("q"+number,data.get("q"+number)||"")}
       const submitButton=event.currentTarget.querySelector('button[type="submit"]');
       submitButton.disabled=true;
       submitButton.textContent="Submitting...";
