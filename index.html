@@ -207,14 +207,14 @@
         <a href="https://streamlineperth.com/team/ricky/" target="_blank" rel="noopener">
           <article><span>🎵</span><h3>Live music</h3><p>Live music by Ricky Green throughout the evening.</p></article>
         </a>
-        <a href="https://youtu.be/JnoZHR6WdsE?si=Xvyy1MIrkD5snpKq" target="_blank" rel="noopener">
+        <a href="https://www.thebelltower.com.au/bell-ringing/" target="_blank" rel="noopener">
           <article><span>🔔</span><h3>Bell ringing</h3><p>The bells will be ringing, with a private bell ringing demonstration and the chance for guests to ring the bells themselves.</p></article>
         </a>
         <a href="#" onclick="openStory(); return false;">
           <article><span>❤️</span><h3>Our Story</h3><p>Read the story of how we came together, built our family, and found our anchor in each other.</p></article>
         </a>
         <a href="#" onclick="openQuiz(); return false;">
-          <article><span>🏆</span><h3>Brendan & Linley Quiz</h3><p>Think you know us? Ten questions, one winner and a prize on the day.</p></article>
+          <article><span>🏆</span><h3>Brendan & Linley Quiz</h3><p>Think you know us? Fifteen questions, one winner and a $250 dinner for two at 6HEAD Elizabeth Quay.</p></article>
         </a>
       </div>
     </section>
@@ -267,14 +267,14 @@
         Thank you for your RSVP.<br>We are so excited to celebrate this special day with you.<br>Brendan, Linley & Aubrey ❤️
       </div>
     </section>
-    <section id="qa" class="section qa"><p class="eyebrow">Q & A</p><h2>Good to know</h2><details><summary>Can I bring a plus one?</summary><p>Due to the intimate size of the venue, we are keeping the guest list to those named on the invitation.</p></details><details><summary>What should I wear?</summary><p>Cocktail / formal. The setting is rooftop and riverside, so dress for a beautiful evening out.</p></details><details><summary>Will guests be able to ring the bells?</summary><p>Yes. We are planning a bell ringing demonstration with an opportunity for guests to ring the bells themselves.</p></details><details><summary>What happens after 8?</summary><p>We intend on kicking on with some nearby pubs and clubs, seeing where the night takes us.</p></details></section>
+    <section id="qa" class="section qa"><p class="eyebrow">Q & A</p><h2>Good to know</h2><details><summary>Can I bring a plus one?</summary><p>If you've received this invite, we would be delighted if your partner, spouse or significant other could attend with you.</p></details><details><summary>What should I wear?</summary><p>Cocktail / formal. The setting is rooftop and riverside, so dress for a beautiful evening out.</p></details><details><summary>Will guests be able to ring the bells?</summary><p>Yes. We are planning a bell ringing demonstration with an opportunity for guests to ring the bells themselves.</p></details><details><summary>What happens after 8?</summary><p>We intend on kicking on with some nearby pubs and clubs, seeing where the night takes us.</p></details></section>
 
     <div id="quizModal" class="quiz-modal hidden" onclick="if(event.target.id==='quizModal') closeQuiz();">
       <div class="quiz-modal-content">
         <button class="quiz-close" type="button" onclick="closeQuiz()">Close</button>
         <p class="eyebrow">A little competition in true Linley and Brendan style</p>
         <h2>The Brendan & Linley Quiz</h2>
-        <p class="quiz-intro">Think you know us? Type your answer to all fifteen questions. There are no clues and no multiple choice—we want to see what you come up with. We’ll score the answers ourselves, and the winner gets a prize on the day.</p>
+        <p class="quiz-intro">Think you know us? Type your answer to all fifteen questions, then finish with your best—or worst—piece of marriage advice as the tie-breaker. There are no clues and no multiple choice—we want to see what you come up with. We’ll score the answers ourselves, and the winner will receive dinner for two at 6HEAD Elizabeth Quay, valued at $250.</p>
         <iframe name="hidden-quiz-frame" style="display:none;"></iframe>
         <form id="quiz-form" class="quiz-form">
           <div class="quiz-person">
@@ -297,6 +297,7 @@
           <label class="quiz-question"><span>13. Which two WA sporting teams are Brendan and Linley members of?</span><input name="q13" required maxlength="180" placeholder="Your answer"></label>
           <label class="quiz-question"><span>14. In Brendan’s opinion, what is the happiest time of the year?</span><input name="q14" required maxlength="180" placeholder="Your answer"></label>
           <label class="quiz-question"><span>15. We have a family cricket membership—what is the name of our second child?</span><input name="q15" required maxlength="180" placeholder="Your answer"></label>
+          <label class="quiz-question"><span>Tie-breaker: Give us your best—or worst—piece of marriage advice.</span><textarea name="tiebreaker" required maxlength="600" placeholder="Your best or worst marriage advice"></textarea></label>
           <button type="submit">Submit Quiz</button>
         </form>
         <div id="quiz-result" class="quiz-result"></div>
@@ -407,6 +408,7 @@
       }
       const payload=new URLSearchParams({name:document.getElementById("quiz-name").value,email:document.getElementById("quiz-email").value});
       for(let number=1;number<=15;number++){payload.set("q"+number,data.get("q"+number)||"")}
+      payload.set("tiebreaker",data.get("tiebreaker")||"");
       const submitButton=event.currentTarget.querySelector('button[type="submit"]');
       submitButton.disabled=true;
       submitButton.textContent="Submitting...";
